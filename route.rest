@@ -1,0 +1,29 @@
+GET http://localhost:3000/invitations/all
+
+###
+GET http://localhost:3000/invitations/get/6054a005d3cf5c256bbabc01
+
+###
+POST http://localhost:3000/invitations/create
+Content-Type: application/json
+
+{
+    "name": "Kitty",
+    "date": "1 April 2021",
+    "hour": "11.00 PM",
+    "address": "Sukarno Hatta 21"
+}
+
+###
+PATCH http://localhost:3000/invitations/update/6054a56934a41b2805d8ceeb
+Content-Type: application/json
+
+{
+    "name": "Harley",
+    "date": "19 December 2021",
+    "hour": "03.00 PM",
+    "address": "Gubeng"
+}
+
+###
+DELETE http://localhost:3000/invitations/delete/6054a005d3cf5c256bbabc01
