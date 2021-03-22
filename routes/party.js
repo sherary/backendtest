@@ -1,26 +1,27 @@
 const express = require('express')
-const invitations = require('../models/invitations')
 const router = express.Router()
+const party = require('../models/party')
 
-//Get all data
+// All Invitations
 router.get('/all', async (req, res) => {
     try {
-        const getAllInvitations = await invitations.find()
+        const getAllInvitations = await party.find()
         res.json(getAllInvitations)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 })
 
-//Get one data
+//Get One party invitation data
 router.get('/get/:id', getOneInvitation, async (req, res) => {
     res.json(res.getInvitation)
 })
 
-//Create data
+//Create party invitations
 router.post('/create', async (req, res) => {
-    const createInvite = new invitations({
+    const createInvite = new party({
         name: req.body.name,
+        party: req.body.party,
         date: req.body.date,
         hour: req.body.hour,
         address: req.body.address
@@ -34,10 +35,14 @@ router.post('/create', async (req, res) => {
     }
 })
 
-//Update data
+//Update the Invitation
 router.patch('/update/:id', getOneInvitation, async (req, res) => {
     if(req.body.name != null) {
         res.getInvitation.name = req.body.name
+    }
+
+    if(req.body.party != null) {
+        res.getInvitation.party = req.body.party
     }
 
     if(req.body.date != null) {
@@ -60,7 +65,7 @@ router.patch('/update/:id', getOneInvitation, async (req, res) => {
     }
 })
 
-//Delete data
+//Delete invitation data
 router.delete('/delete/:id', getOneInvitation, async (req, res) => {
     try {
         await res.getInvitation.deleteOne()
@@ -73,7 +78,7 @@ router.delete('/delete/:id', getOneInvitation, async (req, res) => {
 async function getOneInvitation(req, res, next) {
     let getInvitation
     try {
-        getInvitation = await invitations.findById(req.params.id)
+        getInvitation = await party.findById(req.params.id)
         if (getInvitation == null) {
             return res.status(404).json({ message: 'Invitation does not exist'})
         }

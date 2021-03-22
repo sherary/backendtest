@@ -1,23 +1,19 @@
 {
-  "name": "backend",
+  "name": "Frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sherary/backendtest.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sherary/backendtest/issues"
-  },
-  "homepage": "https://github.com/sherary/backendtest#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
     "mongoose": "^5.12.1"
   },
   "devDependencies": {
